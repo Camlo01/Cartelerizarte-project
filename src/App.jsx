@@ -14,10 +14,6 @@ const Atalaya = lazy(() => import('./pages/Atalaya/AtalayaPage'))
 
 function App() {
 
-  const defaultStyles = {
-    boxSizing: 'border-box'
-  }
-
   return (
     <app>
       <Router>
