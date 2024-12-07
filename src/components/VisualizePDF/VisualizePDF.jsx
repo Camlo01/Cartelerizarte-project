@@ -1,22 +1,12 @@
 import { PDFViewer } from "@react-pdf/renderer";
 
+import './VisualizePDF.css'
+
 export default function VisualizePDF({ Document: DocumentToDisplay }) {
 
     return (
-        <div
-            style={{
-                backgroundColor: '#acafb7',
-                padding: "10px 0",
-                margin: '0 auto 50px'
-            }}
-        >
-            <PDFViewer
-                style={{
-                    width: '89vw',
-                    height: '82vh',
-                    display: 'block',
-                    margin: 'auto'
-                }}>
+        <div className="PDFViewerContainer" style={styles.containerViewer}>
+            <PDFViewer className="PDFViewerElement" style={styles.viewerElement}>
                 {DocumentToDisplay}
             </PDFViewer>
         </div>
