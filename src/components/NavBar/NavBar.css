@@ -25,7 +25,8 @@ nav ul li {
 }
 
 nav ul li a {
-    font-weight: 800;
+    font-family: 'Noto Sans Display';
+    font-weight: 500;
     color: rgb(240, 240, 240);
     text-decoration: none;
     transition: all .175s ease;
