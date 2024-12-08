@@ -1,8 +1,10 @@
+import NotYet from "../../components/NotYet"
+
 export default function MinisterioPage() {
 
     return (
         <div>
-            <h1>Ministerio</h1>
+            <NotYet />
         </div>
     )
 
