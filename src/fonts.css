@@ -1,0 +1,32 @@
+
+/* Montserrat */
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/assets/Fonts/Montserrat/Montserrat-Medium.ttf');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/assets/Fonts/Montserrat/Montserrat-SemiBold.ttf');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/assets/Fonts/Montserrat/Montserrat-Bold.ttf');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* Noto Sans Display */
+
+@font-face {
+    font-family: 'Noto Sans Display';
+    src: url('/assets/Fonts/NotoSansDisplay/NotoSansDisplay-Regular.ttf');
+    font-weight: 500;
+    font-display: swap;
+}
