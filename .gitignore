@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+#Project generated
+cartelerizarte-project
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
