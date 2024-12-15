@@ -1,26 +1,70 @@
-import NotYet from "../../components/NotYet";
+import { useState } from 'react';
+
+import DateForm from './components/DateForm';
+import VisualizePDF from "../../components/VisualizePDF/VisualizePDF";
+import AtalayaPDF from "./PDF/AtalayaPDF";
+import NamesInputs from './components/NamesInputs';
+
+import { getProgrammableDays } from './PDF/util/schedule';
+import { daysByMonths, nextMonths } from '../Asignaciones/PDF/util/schedule';
 
 export default function AtalayaPage() {
 
-    function getWeekendDays(start) {
-        let scheduledDays = [];
-        const [year, month, day] = start.split("-").map(Number);
-        let date = new Date(Date.UTC(year, month - 1, day)); // Mes es 0-indexado
-        const dayOfWeek = date.getUTCDay(); // Día de la semana inicial
+    // Initialize Schedule
+    const [dateStart, setDateStart] = useState(null)
+    const [weekendDay, setWeekendDay] = useState(null)
 
-        while (date.getUTCMonth() === month - 1) {
-            if (date.getUTCDay() === dayOfWeek) {
-                scheduledDays.push(date.getUTCDate()); // Obtener el día en UTC
-            }
-            date.setUTCDate(date.getUTCDate() + 7); // Avanzar 7 días en UTC
-        }
+    // Content
+    const [schedule, setSchedule] = useState([])
+    const [peopleScheduled, setPeopleScheduled] = useState([])
 
-        return scheduledDays;
+    // PDF generated
+    const currentDocument = <AtalayaPDF schedule={schedule} peopleScheduled={peopleScheduled} />
+
+    // Behaviors
+    const handleDateStart = (e) => {
+        setDateStart(e.target.value + '-1');
     }
 
+    const handleSelectWeekendDay = (e) => {
+        setWeekendDay(e.target.value);
+    }
+
+    const handleBtnDateStart = (e) => {
+        e.preventDefault();
+
+
+        if (dateStart != null && weekendDay != null) {
+            const programmableDays = getProgrammableDays(dateStart, weekendDay)
+
+            const daysOnMonths = daysByMonths(programmableDays)
+            const correspondingMonths = nextMonths(dateStart, daysByMonths(programmableDays).length)
+
+            const newSchedule = correspondingMonths.map((month, index) => ({
+                month: month,
+                day: daysOnMonths[index],
+            }));
+
+            setSchedule(newSchedule)
+
+        } else {
+            alert("Asegúrate de llenar todos los campos primero")
+        }
+    }
+
+
     return (
-        <div>
-            <NotYet />
+        <div style={{ backgroundColor: '#CA7500', color: 'white' }}>
+            {/* <NotYet /> */}
+
+            <DateForm
+                handleDateStart={handleDateStart}
+                handleSelectWeekendDay={handleSelectWeekendDay}
+                handleBtnDateStart={handleBtnDateStart} />
+
+            <NamesInputs schedule={schedule} setPeopleScheduled={setPeopleScheduled} />
+
+            <VisualizePDF Document={currentDocument} />
         </div>
     )
 }
