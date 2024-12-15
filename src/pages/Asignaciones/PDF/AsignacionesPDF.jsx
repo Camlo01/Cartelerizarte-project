@@ -15,26 +15,26 @@ export default function AsignacionesPDF({ schedule, peopleScheduled }) {
     Font.register({
         family: 'Montserrat',
         fonts: [
-          {
-            src: '/assets/Fonts/Montserrat/Montserrat-Medium.ttf',
-            fontWeight: 500,
-          },
-          {
-            src: 'assets/Fonts/Montserrat/Montserrat-SemiBold.ttf',
-            fontWeight: 600
-          },
-          {
-            src: '/assets/Fonts/Montserrat/Montserrat-Bold.ttf',
-            fontWeight: 700,
-          },
+            {
+                src: '/assets/Fonts/Montserrat/Montserrat-Medium.ttf',
+                fontWeight: 500,
+            },
+            {
+                src: 'assets/Fonts/Montserrat/Montserrat-SemiBold.ttf',
+                fontWeight: 600
+            },
+            {
+                src: '/assets/Fonts/Montserrat/Montserrat-Bold.ttf',
+                fontWeight: 700,
+            },
         ],
-      });
+    });
 
 
     return (
         <Document title='Programación Asignaciones'>
             <Page
-                size="LETTER" 
+                size="LETTER"
                 orientation="landscape" >
 
                 <View>
@@ -92,7 +92,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled }) {
                                                     color: deepRedColor,
                                                     letterSpacing: '2px',
                                                     fontFamily: 'Montserrat',
-                                                    fontWeight: 500
+                                                    fontWeight: 600
                                                 }}>{capitalizeFirstLetter(month.month)}</Text>
                                             </View>
                                         </View>
@@ -123,7 +123,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled }) {
                                                             borderRight: 3, borderColor: deepRedColor,
                                                         }}>
                                                             <Text style={{
-                                                                display: 'block', fontSize: 18, fontFamily: 'Montserrat', fontWeight: 700,
+                                                                display: 'block', fontSize: 18, fontFamily: 'Montserrat', fontWeight: 600,
                                                                 color: i % 2 === 0 ? 'black' : deepRedColor
                                                             }}>
                                                                 {date}
@@ -132,7 +132,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled }) {
                                                         <View style={{ display: 'flex', width: '100%' }}>
                                                             {
                                                                 (contentScheduled != undefined) ?
-                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '12px', textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 500 }}>
+                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '10px', textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 500 }}>
 
                                                                         {/* First Column */}
                                                                         <View style={{
@@ -178,7 +178,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled }) {
                                                                             alignItems: 'center', justifyContent: 'center', borderRight: 3, borderColor: deepRedColor,
                                                                         }}>
                                                                             <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Text>{contentScheduled.audioVideo1}</Text></View>
-                                                                            <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Text>{contentScheduled.audioVideo2}</Text></View>
+                                                                            <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: i % 2 === 0 ? '#e4d2d2' : '#f2f2f2', }}><Text>{contentScheduled.audioVideo2}</Text></View>
                                                                         </View>
 
                                                                     </View>
@@ -204,12 +204,23 @@ export default function AsignacionesPDF({ schedule, peopleScheduled }) {
                                     style={{
                                         width: '100%',
                                         height: '100%',
-                                        padding: '25% 0 0 0',
+                                        // padding: '25% 0 0 0',
                                         textAlign: 'center',
-                                        backgroundColor: '#09397D'
+                                        display: 'flex',
+                                        justifyContent: 'center'
+                                        // backgroundColor: '#09397D'
                                     }}>
-                                    <Text style={{ fontSize: '35px', color: 'white', fontFamily: 'Montserrat', }}>¡Genera el cronograma!</Text>
-                                    </View>
+                                    <Text style={{
+                                        fontSize: '36px',
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: 700,
+                                        color: '#212226',
+                                        margin: '0 auto',
+                                        width: '530px',
+                                        paddingBottom: '20px'
+
+                                    }}>¡Genera el cronograma!</Text>
+                                </View>
                             )
                         }
                     </View>

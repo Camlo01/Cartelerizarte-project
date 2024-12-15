@@ -4,6 +4,12 @@ import Icon from '/assets/icons/icon-1.png'
 
 export default function Title() {
 
+    const deepRedColor = 'rgb(167,33,45)'
+    const lightRed = '#F1BDC5'
+    const firstGray = '#686868'
+    const secondGray = '#555555'
+    const thirdGray = '#454545'
+
     const styles = StyleSheet.create({
         titleContainer: {
             display: 'flex',
@@ -16,40 +22,39 @@ export default function Title() {
         titleIconContainer: {
             width: '115px',
             // height: '110px',
-            backgroundColor: "rgb(229,167,172)",
+            backgroundColor: lightRed,
             alignItems: 'center',
             justifyContent: 'center'
         },
         titleIcon: {
             width: '75px'
             // backgroundColor: 'red'
-        }
-        ,
+        },
         titleColumns: {
             display: 'flex',
             // height: '115px',
             flex: 'auto',
             flexDirection: 'row',
             color: 'white',
-            fontSize: '22px',
+            fontSize: '20px',
             fontWeight: '800'
         },
         titleColumnsElement: { width: '33.34%', justifyContent: 'center', alignItems: 'center' },
-        titleColumnsElementFirst: { backgroundColor: 'rgb(75,78,74)' },
-        titleColumnsElementSecond: { backgroundColor: 'rgb(60,62,58)' },
-        titleColumnsElementThird: { backgroundColor: 'rgb(46,47,45)' },
+        titleColumnsElementFirst: { backgroundColor: firstGray },
+        titleColumnsElementSecond: { backgroundColor: secondGray },
+        titleColumnsElementThird: { backgroundColor: thirdGray },
         titleColumnsIndicator: {
             display: 'block',
             position: 'absolute',
             // fontSize: '23px',
-            backgroundColor: 'rgb(167,33,45)',
+            backgroundColor: deepRedColor,
             padding: '4px 20px',
             // top: '80px', // ORIGINAL
             top: '45px',
             width: '50%',
             left: '50%',
             borderRadius: "0px",
-            fontWeight: 600, 
+            fontWeight: 600,
         },
         textTitleIndicator: {
             margin: '0px auto',
@@ -63,7 +68,7 @@ export default function Title() {
                 {/* Icon Container */}
                 <View style={styles.titleIconContainer}>
                     {/* <Text>Icon</Text> Icon Image */}
-                    <Image style={styles.titleIcon} src={Icon}> </Image>
+                    <Image style={styles.titleIcon} src={Icon} />
                 </View>
 
                 {/* Columns Titles */}
@@ -86,7 +91,7 @@ export default function Title() {
                 </View>
 
             </View >
-            <View style={{ display: 'block', width: '100%', height: "5px", backgroundColor: "rgb(167,33,45)" }} />{/* Divisor Line */}
+            <View style={{ display: 'block', width: '100%', height: "5px", backgroundColor: deepRedColor }} />{/* Divisor Line */}
         </View>
     )
 }
