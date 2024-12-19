@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AutoLoadNames from "./AutoLoadNames";
 
 export default function NamesInputs({ schedule, setPeopleScheduled }) {
     const [inputValues, setInputValues] = useState([]);
@@ -53,6 +54,9 @@ export default function NamesInputs({ schedule, setPeopleScheduled }) {
     const handleButtonClick = () => {
         setPeopleScheduled(inputValues); // Guardamos el array de objetos
     };
+    const setPS = (val) => {
+        setPeopleScheduled(val)
+    }
 
     return (
         <>
@@ -65,14 +69,18 @@ export default function NamesInputs({ schedule, setPeopleScheduled }) {
                     fontWeight: 800
                 }}>Ingresa y carga los nombres</h2>
 
+                <AutoLoadNames
+                    schedule={schedule}
+                    setInputValues={setInputValues}
+                    setPeopleScheduled={setPS} />
                 {allInputs}
 
                 <button style={{
-                        display: 'block', width: '230px', height: '60px', fontSize: '1.2rem', fontWeight: 800, backgroundColor: 'white',
-                        margin: '40px auto 50px',
-                        color: '#a7212d',
-                        border: '2px solid #a7212d'
-                    }}
+                    display: 'block', width: '230px', height: '60px', fontSize: '1.2rem', fontWeight: 800, backgroundColor: 'white',
+                    margin: '40px auto 50px',
+                    color: '#a7212d',
+                    border: '2px solid #a7212d'
+                }}
                     onClick={handleButtonClick}
                 >
                     Cargar Nombres

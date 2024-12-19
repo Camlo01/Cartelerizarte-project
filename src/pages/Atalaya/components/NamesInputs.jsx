@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AutoLoadNames from "./AutoLoadNames";
 
 
 export default function NamesInputs({ schedule, setPeopleScheduled }) {
@@ -53,6 +54,10 @@ export default function NamesInputs({ schedule, setPeopleScheduled }) {
         setPeopleScheduled(inputValues); // Guardamos el array de objetos
     };
 
+    const setPS = (val) => {
+        setPeopleScheduled(val)
+    }
+
     return (
         <>
             <div>
@@ -63,6 +68,12 @@ export default function NamesInputs({ schedule, setPeopleScheduled }) {
                     fontSize: '32px',
                     fontWeight: 800
                 }}>Ingresa y carga los nombres</h2>
+
+                <AutoLoadNames
+                    schedule={schedule}
+                    setInputValues={setInputValues}
+                    setPeopleScheduled={setPS}
+                />
 
                 {allInputs}
 
