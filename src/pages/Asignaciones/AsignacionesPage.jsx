@@ -19,7 +19,8 @@ export default function AsignacionesPage() {
     const [peopleScheduled, setPeopleScheduled] = useState([])
 
     // PDF generated
-    const currentDocument = <AsignacionesPDF schedule={schedule} peopleScheduled={peopleScheduled} />
+    const [fileName, setFileName] = useState("")
+    const currentDocument = <AsignacionesPDF schedule={schedule} peopleScheduled={peopleScheduled} setFileName={setFileName} />
 
     // Behaviors
     const handleDateStart = (e) => {
@@ -67,7 +68,7 @@ export default function AsignacionesPage() {
 
             <NamesInputs schedule={schedule} setPeopleScheduled={setPeopleScheduled} />
 
-            <VisualizePDF Document={currentDocument} />
+            <VisualizePDF Document={currentDocument} fileName={fileName} />
         </div>
     )
 }

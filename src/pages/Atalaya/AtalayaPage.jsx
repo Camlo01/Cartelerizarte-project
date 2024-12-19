@@ -19,7 +19,8 @@ export default function AtalayaPage() {
     const [peopleScheduled, setPeopleScheduled] = useState([])
 
     // PDF generated
-    const currentDocument = <AtalayaPDF schedule={schedule} peopleScheduled={peopleScheduled} />
+    const [fileName, setFileName] = useState("")
+    const currentDocument = <AtalayaPDF schedule={schedule} peopleScheduled={peopleScheduled} setFileName={setFileName} />
 
     // Behaviors
     const handleDateStart = (e) => {
@@ -64,7 +65,7 @@ export default function AtalayaPage() {
 
             <NamesInputs schedule={schedule} setPeopleScheduled={setPeopleScheduled} />
 
-            <VisualizePDF Document={currentDocument} />
+            <VisualizePDF Document={currentDocument} fileName={fileName} />
         </div>
     )
 }
