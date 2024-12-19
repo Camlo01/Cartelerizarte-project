@@ -2,11 +2,27 @@ import { Page, Text, View, Document, Image, Font } from '@react-pdf/renderer';
 import Title from './Components/title';
 
 import ImageBackground from '/assets/background.png'
+import { useEffect } from 'react';
 
-export default function AtalayaPDF({ schedule, peopleScheduled }) {
+export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
 
     const deepYellowColor = '#CA7500'
     let counter = 0
+
+    useEffect(() => {
+
+        if (schedule.length > 0) {
+            const months = schedule.map((month) =>
+                month.month.slice(0, 3).charAt(0).toUpperCase() + month.month.slice(1, 3)
+            );
+
+            setFileName("Presidente & Lector " + months.join("-"))
+
+        } else {
+            setFileName("Listado sin generar")
+        }
+
+    }, [schedule])
 
     // only TTF and WOFF font are supported
     Font.register({
@@ -53,7 +69,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled }) {
                         <Title />
 
                         {(schedule.length > 0) ?
-                            <View style={{ height: '85%', width: '70%', margin: '0 auto' }}>
+                            <View style={{ height: '78%', width: '70%', margin: '0 auto' }}>
                                 {schedule.map((month, i) => (
                                     <View style={{ height: '100%', display: 'flex', flexDirection: 'row', borderBottom: '5px', borderColor: deepYellowColor }} key={i}>
                                         <View style={{
@@ -115,7 +131,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled }) {
                                                         <View style={{ display: 'flex', width: '100%' }}>
                                                             {
                                                                 (contentScheduled != undefined) ?
-                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '14px', textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 500, color:'#555555' }}>
+                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '13px', textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 500, color: '#555555' }}>
 
                                                                         {/* First Column */}
                                                                         <View style={{

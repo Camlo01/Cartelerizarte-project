@@ -2,10 +2,26 @@ import { Page, Text, View, Document, Image, Font } from '@react-pdf/renderer';
 import Title from './Components/title';
 
 import ImageBackground from '/assets/background.png'
+import { useEffect } from 'react';
 
-export default function AsignacionesPDF({ schedule, peopleScheduled }) {
+export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName }) {
 
     // const [counter, setCounter] = useState(0) // -> For future updates
+
+    useEffect(() => {
+
+        if (schedule.length > 0) {
+            const months = schedule.map((month) =>
+                month.month.slice(0, 3).charAt(0).toUpperCase() + month.month.slice(1, 3)
+            );
+
+            setFileName("Asignaciones " + months.join("-"))
+
+        } else {
+            setFileName("Listado sin generar")
+        }
+
+    }, [schedule])
 
     const deepRedColor = '#a7212d'
 
@@ -67,7 +83,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled }) {
                                             // height: '100%',
                                             padding: 0,
                                             margin: 0,
-                                            borderBottom: 5,
+                                            borderBottom: 4,
                                             borderColor: deepRedColor
                                         }
                                         }>
@@ -175,7 +191,8 @@ export default function AsignacionesPDF({ schedule, peopleScheduled }) {
 
                                                                         <View style={{
                                                                             margin: "auto", flex: 3, width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
-                                                                            alignItems: 'center', justifyContent: 'center', borderRight: 3, borderColor: deepRedColor,
+                                                                            alignItems: 'center', justifyContent: 'center',
+                                                                            // borderRight: 3, borderColor: deepRedColor,
                                                                         }}>
                                                                             <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Text>{contentScheduled.audioVideo1}</Text></View>
                                                                             <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: i % 2 === 0 ? '#e4d2d2' : '#f2f2f2', }}><Text>{contentScheduled.audioVideo2}</Text></View>
