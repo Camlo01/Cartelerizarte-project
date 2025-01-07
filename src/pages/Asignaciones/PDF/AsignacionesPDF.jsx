@@ -55,7 +55,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
 
                 <View>
 
-                    <Image src={ImageBackground} style={{ height: '100%', width: '100%' }} />
+                    {/* <Image src={ImageBackground} style={{ height: '100%', width: '100%' }} /> */}
 
                     {/* Principal View */}
                     <View

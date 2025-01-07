@@ -53,7 +53,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
 
                 <View>
 
-                    <Image src={ImageBackground} style={{ height: '100%', width: '100%' }} />
+                    {/* <Image src={ImageBackground} style={{ height: '100%', width: '100%' }} /> */}
 
                     {/* Principal View */}
                     <View
@@ -131,7 +131,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
                                                         <View style={{ display: 'flex', width: '100%' }}>
                                                             {
                                                                 (contentScheduled != undefined) ?
-                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '13px', textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 500, color: '#555555' }}>
+                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '14px', textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 500, color: '#555555' }}>
 
                                                                         {/* First Column */}
                                                                         <View style={{
