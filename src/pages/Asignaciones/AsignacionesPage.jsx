@@ -56,7 +56,7 @@ export default function AsignacionesPage() {
 
     return (
         <div style={{
-            backgroundColor: '#0c4ba6',
+            backgroundColor: 'rgb(157, 18, 37)',
             color: 'white'
         }}>
 
