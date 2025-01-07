@@ -11,6 +11,8 @@ const Home = lazy(() => import('./pages/Home/HomePage'))
 const Ministerio = lazy(() => import('./pages/Ministerio/MinisterioPage'))
 const Asignaciones = lazy(() => import('./pages/Asignaciones/AsignacionesPage'))
 const Atalaya = lazy(() => import('./pages/Atalaya/AtalayaPage'))
+const Conferencias = lazy(() => import('./pages/Conferencias/ConferenciasPages'))
+const Limpieza = lazy(() => import('./pages/Limpieza/LimpiezaPage'))
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
             <Route path='/vida-y-ministerio' element={<Ministerio />} />
             <Route path='/asignaciones' element={<Asignaciones />} />
             <Route path='/atalaya' element={<Atalaya />} />
+            <Route path='/conferencias' element={<Conferencias />} />
+            <Route path='/limpieza' element={<Limpieza />} />
 
             <Route path='*' element={<Home />}></Route> {/* 404 Route */}
           </Route>
