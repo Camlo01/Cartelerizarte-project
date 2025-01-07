@@ -17,11 +17,17 @@ nav ul li:first-child {
     margin-right: auto;
 }
 
+nav ul li:first-child :hover {
+    color: white;
+}
+
 nav ul li {
     width: fit-content;
     list-style: none;
     font-size: 1.6rem;
     padding: 16px 20px;
+    position: relative;
+    /* Para el dropdown */
 }
 
 nav ul li a {
@@ -29,9 +35,72 @@ nav ul li a {
     font-weight: 500;
     color: rgb(240, 240, 240);
     text-decoration: none;
-    transition: all .175s ease;
+    transition: all 0.175s ease;
 }
 
 nav ul li a:hover {
     color: rgb(162, 162, 162);
+}
+
+/* Estilo para el contenedor dropdown */
+nav ul li .dropdown-title {
+    font-family: 'Noto Sans Display';
+    font-weight: 500;
+    color: rgb(240, 240, 240);
+    cursor: pointer;
+    transition: all 0.175s ease;
+}
+
+nav ul li .dropdown-title:hover {
+    color: rgb(162, 162, 162);
+}
+
+/* Menú desplegable oculto por defecto */
+nav ul li .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    /* Justo debajo del contenedor padre */
+    right: 0;
+    /* background: #032859; */
+    background: rgba(4, 59, 130, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 1000;
+    width: max-content;
+}
+
+/* Mostrar el menú desplegable cuando está activo */
+nav ul li:hover .dropdown-menu {
+    display: block;
+    position: absolute;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul li .dropdown-menu li {
+    width: 100%;
+    padding: 0;
+    text-align: left;
+}
+
+nav ul li .dropdown-menu li a {
+    padding: 12px 20px;
+    width: 100%;
+    font-family: 'Noto Sans Display';
+    font-weight: 400;
+    color: rgb(162, 162, 162);
+    text-decoration: none;
+    transition: all 0.175s ease;
+    display: block;
+}
+
+nav ul li .dropdown-menu li a:hover {
+    color: rgb(240, 240, 240);
+    background: rgba(255, 255, 255, 0.1);
 }
