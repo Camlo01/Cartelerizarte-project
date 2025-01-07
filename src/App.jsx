@@ -11,7 +11,7 @@ const Home = lazy(() => import('./pages/home/HomePage'))
 const Ministerio = lazy(() => import('./pages/ministerio/MinisterioPage'))
 const Asignaciones = lazy(() => import('./pages/asignaciones/AsignacionesPage'))
 const Atalaya = lazy(() => import('./pages/atalaya/AtalayaPage'))
-const Conferencias = lazy(() => import('./pages/conferencias/ConferenciasPages'))
+const Conferencias = lazy(() => import('./pages/conferencias/ConferenciasPage'))
 const Limpieza = lazy(() => import('./pages/limpieza/LimpiezaPage'))
 
 function App() {
