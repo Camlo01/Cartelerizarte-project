@@ -7,12 +7,12 @@ import {
 
 import Layout from './components/Layout'
 
-const Home = lazy(() => import('./pages/Home/HomePage'))
-const Ministerio = lazy(() => import('./pages/Ministerio/MinisterioPage'))
-const Asignaciones = lazy(() => import('./pages/Asignaciones/AsignacionesPage'))
-const Atalaya = lazy(() => import('./pages/Atalaya/AtalayaPage'))
-const Conferencias = lazy(() => import('./pages/Conferencias/ConferenciasPages'))
-const Limpieza = lazy(() => import('./pages/Limpieza/LimpiezaPage'))
+const Home = lazy(() => import('./pages/home/HomePage'))
+const Ministerio = lazy(() => import('./pages/ministerio/MinisterioPage'))
+const Asignaciones = lazy(() => import('./pages/asignaciones/AsignacionesPage'))
+const Atalaya = lazy(() => import('./pages/atalaya/AtalayaPage'))
+const Conferencias = lazy(() => import('./pages/conferencias/ConferenciasPages'))
+const Limpieza = lazy(() => import('./pages/limpieza/LimpiezaPage'))
 
 function App() {
 
