@@ -52,11 +52,8 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
             <Page
                 size="LETTER"
                 orientation="landscape" >
-
                 <View>
-
                     {/* <Image src={ImageBackground} style={{ height: '100%', width: '100%' }} /> */}
-
                     {/* Principal View */}
                     <View
                         style={{
@@ -69,11 +66,8 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                             width: '100%'
                         }}
                     >
-
                         < Title />
-
                         {(schedule.length > 0) ?
-
                             <View style={{ height: '100%' }}>
                                 {schedule.map((month, i) => (
                                     <View key={i}
@@ -160,10 +154,9 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                                                 <Text style={{}}>{contentScheduled.acomodadores2}</Text>
                                                                             </View>
                                                                             <View style={{
-                                                                                // #f2f2f2
-                                                                                margin: 'auto', width: '100%', height: '100%', backgroundColor: i % 2 === 0 ? '#e4d2d2' : '#f2f2f2',
                                                                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                                                // borderLeft: 2, borderColor: '#a7212d'
+                                                                                margin: 'auto', width: '100%', height: '100%',
+                                                                                borderLeft: 3, borderColor: '#a7212d'
                                                                             }}>
                                                                                 <Text style={{}}>{contentScheduled.seguridad}</Text>
                                                                             </View>
@@ -179,9 +172,9 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                                                 <Text>{contentScheduled.microfonos2}</Text>
                                                                             </View>
                                                                             <View style={{
-                                                                                margin: 'auto', width: '100%', height: '100%', backgroundColor: i % 2 === 0 ? '#e4d2d2' : '#f2f2f2',
+                                                                                margin: 'auto', width: '100%', height: '100%',
                                                                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                                                // borderLeft: 2, borderColor: '#a7212d'
+                                                                                borderLeft: 3, borderColor: '#a7212d'
                                                                             }}>
                                                                                 <Text style={{ textAlign: 'center' }}>{contentScheduled.plataforma}</Text>
                                                                             </View>
@@ -192,10 +185,12 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                                         <View style={{
                                                                             margin: "auto", flex: 3, width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
                                                                             alignItems: 'center', justifyContent: 'center',
-                                                                            // borderRight: 3, borderColor: deepRedColor,
                                                                         }}>
                                                                             <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Text>{contentScheduled.audioVideo1}</Text></View>
-                                                                            <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: i % 2 === 0 ? '#e4d2d2' : '#f2f2f2', }}><Text>{contentScheduled.audioVideo2}</Text></View>
+                                                                            <View style={{
+                                                                                margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                                                borderLeft: 3, borderColor: '#a7212d'
+                                                                            }}><Text>{contentScheduled.audioVideo2}</Text></View>
                                                                         </View>
 
                                                                     </View>
@@ -205,16 +200,12 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                                     </View>
                                                             }
                                                         </View>
-
-
                                                     </View>
                                                 )
                                             })}
                                         </View>
                                     </View>
-
                                 ))}
-
                             </View>
                             : (
                                 <View
