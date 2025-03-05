@@ -223,6 +223,9 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                             <option value="asamblea">Día de Asamblea</option>
                             <option value="visita">Visita del Superintendente</option>
                             <option value="conmemoracion">Día de Conmemoración</option>
+                            <option value="especial1">Representante Central Mundial</option>
+                            <option value="especial2">Reunión Especial</option>
+                            <option value="especial3">Discurso Especial</option>
                         </select>
                     </div>
                 </div>

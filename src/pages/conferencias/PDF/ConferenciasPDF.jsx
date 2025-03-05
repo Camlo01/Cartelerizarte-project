@@ -233,10 +233,13 @@ function ContentOfDate({ content }) {
     if (option === 'asamblea') message = 'Día de Asamblea'
     if (option === 'visita') message = 'Visita Superintendente de Circuito'
     if (option === 'conmemoracion') message = 'Día de Conmemoración'
+    if (option === 'especial1') message = 'Discurso con Representate De La Central Mundial'
+    if (option === 'especial2') message = 'Reunión Especial'
+    if (option === 'especial3') message = 'Discurso Especial'
 
     return (
         <View style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600, paddingRight: '50px' }}>{message}</Text>
+            <Text style={{ fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 800, paddingRight: '0px', color: "#CA7500" }}>{message}</Text>
         </View>
     )
 }
