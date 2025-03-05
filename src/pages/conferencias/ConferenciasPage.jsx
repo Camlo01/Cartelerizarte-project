@@ -12,6 +12,7 @@ export default function ConferenciasPages() {
     // Initialize Schedule
     const [dateStart, setDateStart] = useState(null)
     const [weekendDay, setWeekendDay] = useState(null)
+    const [onlyOneMonth, setOnlyOneMonth] = useState(false)
 
     // Content
     const [schedule, setSchedule] = useState([])
@@ -31,13 +32,21 @@ export default function ConferenciasPages() {
         setWeekendDay(e.target.value);
     }
 
+    const handleCheckBox = (e) => {
+        setOnlyOneMonth(e.target.checked)
+    }
+
     const handleBtnDateStart = (e) => {
         e.preventDefault();
 
         if (dateStart != null && weekendDay != null) {
             const programmableDays = getWeekendDays(dateStart, weekendDay)
 
-            const scheduleCreated = getSchedule(dateStart, programmableDays)
+            let scheduleCreated = getSchedule(dateStart, programmableDays)
+
+            if (onlyOneMonth) {
+                scheduleCreated.pop()
+            }
 
             setSchedule(scheduleCreated)
 
@@ -52,6 +61,7 @@ export default function ConferenciasPages() {
             <DateForm
                 handleDateStart={handleDateStart}
                 handleSelectWeekendDay={handleSelectWeekendDay}
+                handleCheckBox={handleCheckBox}
                 handleBtnDateStart={handleBtnDateStart} />
 
             <NamesInputs schedule={schedule} setPeopleScheduled={setPeopleScheduled} />
