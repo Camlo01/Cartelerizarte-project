@@ -4,23 +4,20 @@ import Title from './components/Title'
 // import ImageBackground from '/assets/background.png'
 import { useEffect } from "react"
 
+import { capitalizeFirstLetter, styleOradorString, styleTemaString } from '../../../utils/StringUtils';
+import { fileNameFormatted } from "../../../utils/ScheduleUtils";
+
 export default function ConferenciasPDF({ schedule, peopleScheduled, setFileName }) {
 
     const deepYellowColor = '#CA7500'
-
     const grayLinesColor = '#C7CCD1'
 
+    let counter = 0
+
     useEffect(() => {
-
-        if (schedule.length > 0) {
-            setFileName('Conferencias ' + 'date')
-        } else {
-            setFileName("Listado sin generar")
-        }
-
+        setFileName(fileNameFormatted("Conferencias", schedule))
     }, [schedule])
 
-    let counter = 0
 
     // only TTF and WOFF font are supported
     Font.register({
@@ -199,7 +196,7 @@ function ContentOfDate({ content }) {
                     borderRight: 2.5, borderColor: grayLinesColor
                 }}>
 
-                    <Text>{styleOradorValue(content.orador)}</Text>
+                    <Text>{styleOradorString(content.orador)}</Text>
                 </View>
 
                 <View style={{
@@ -220,7 +217,7 @@ function ContentOfDate({ content }) {
                     width: '285px', display: "flex", alignItems: "center", justifyContent: "center",
                     borderRight: 2.5, borderColor: grayLinesColor, padding: '0 10px'
                 }}>
-                    <Text>{styleTemaValue(content.tema)}</Text>
+                    <Text>{styleTemaString(content.tema)}</Text>
                 </View>
 
                 <View style={{ width: '110px', display: "flex", alignItems: "center", justifyContent: "center", }}>
@@ -242,69 +239,4 @@ function ContentOfDate({ content }) {
             <Text style={{ fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600, paddingRight: '50px' }}>{message}</Text>
         </View>
     )
-}
-
-
-// Utils
-function styleOradorValue(fullname) {
-    let names;
-
-    try {
-        names = fullname.split(" ")
-    } catch (e) {
-        return undefined
-
-    }
-
-    // Two values
-    if (names.length === 2) {
-        const name = names[0]
-        const surname = names[1]
-        return name + '\n' + surname
-    }
-
-    //Three values
-    if (names.length === 3) {
-        const name = names[0]
-        const secondName = names[1]
-        const surname = names[2]
-
-        const firstCombination = name.length + secondName.length > surname.length
-        const secondCombination = name.length > secondName.length + surname.length
-
-        if (firstCombination) { return name + ' ' + secondName + '\n' + surname }
-        if (secondCombination) { return name + '\n' + secondName + ' ' + surname }
-
-    }
-    return fullname
-}
-
-function styleTemaValue(tema) {
-    try {
-
-        if (tema.length > 33) {
-            let words = tema.split(' ')
-
-            const half = Math.ceil(words.length / 2)
-
-            words.splice(half, 0, '\n')
-
-            const fullPhrase = words.join(' ')
-
-            return fullPhrase
-
-        }
-        return tema
-
-    } catch (e) {
-        return undefined
-    }
-
-}
-
-function capitalizeFirstLetter(str) {
-    if (typeof str !== 'string' || str.length === 0) {
-        return ''
-    }
-    return str.charAt(0).toUpperCase() + str.slice(1)
 }

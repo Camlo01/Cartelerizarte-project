@@ -5,8 +5,7 @@ import VisualizePDF from "../../components/VisualizePDF/VisualizePDF";
 import ConferenciasPDF from "./PDF/ConferenciasPDF";
 import NamesInputs from "./components/NamesInputs";
 
-import { getProgrammableDays } from "../atalaya/PDF/util/schedule";
-import { daysByMonths, nextMonths } from '../Asignaciones/PDF/util/schedule';
+import { getWeekendDays, getSchedule } from "../../utils/ScheduleUtils";
 
 export default function ConferenciasPages() {
 
@@ -36,17 +35,11 @@ export default function ConferenciasPages() {
         e.preventDefault();
 
         if (dateStart != null && weekendDay != null) {
-            const programmableDays = getProgrammableDays(dateStart, weekendDay)
+            const programmableDays = getWeekendDays(dateStart, weekendDay)
 
-            const daysOnMonths = daysByMonths(programmableDays)
-            const correspondingMonths = nextMonths(dateStart, daysByMonths(programmableDays).length)
+            const scheduleCreated = getSchedule(dateStart, programmableDays)
 
-            const newSchedule = correspondingMonths.map((month, index) => ({
-                month: month,
-                day: daysOnMonths[index],
-            }));
-
-            setSchedule(newSchedule)
+            setSchedule(scheduleCreated)
 
         } else {
             alert("Asegúrate de llenar todos los campos primero")

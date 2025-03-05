@@ -1,8 +1,11 @@
 import { Page, Text, View, Document, Image, Font } from '@react-pdf/renderer';
 import Title from './Components/title';
 
-import ImageBackground from '/assets/background.png'
+// import ImageBackground from '/assets/background.png'
 import { useEffect } from 'react';
+
+import { capitalizeFirstLetter } from '../../../utils/StringUtils';
+import { fileNameFormatted } from '../../../utils/ScheduleUtils';
 
 export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
 
@@ -10,18 +13,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
     let counter = 0
 
     useEffect(() => {
-
-        if (schedule.length > 0) {
-            const months = schedule.map((month) =>
-                month.month.slice(0, 3).charAt(0).toUpperCase() + month.month.slice(1, 3)
-            );
-
-            setFileName("Presidente & Lector " + months.join("-"))
-
-        } else {
-            setFileName("Listado sin generar")
-        }
-
+        setFileName(fileNameFormatted("Presidente & Lector", schedule))
     }, [schedule])
 
     // only TTF and WOFF font are supported
@@ -198,10 +190,4 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
             </Page>
         </Document >
     )
-}
-
-
-function capitalizeFirstLetter(word) {
-    if (!word) return ''; // Maneja cadenas vacías
-    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 }

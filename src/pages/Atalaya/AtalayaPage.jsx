@@ -5,8 +5,7 @@ import VisualizePDF from "../../components/VisualizePDF/VisualizePDF";
 import AtalayaPDF from "./PDF/AtalayaPDF";
 import NamesInputs from './components/NamesInputs';
 
-import { getProgrammableDays } from './PDF/util/schedule';
-import { daysByMonths, nextMonths } from '../Asignaciones/PDF/util/schedule';
+import { getWeekendDays, getSchedule } from '../../utils/ScheduleUtils';
 
 export default function AtalayaPage() {
 
@@ -34,19 +33,12 @@ export default function AtalayaPage() {
     const handleBtnDateStart = (e) => {
         e.preventDefault();
 
-
         if (dateStart != null && weekendDay != null) {
-            const programmableDays = getProgrammableDays(dateStart, weekendDay)
+            const programmableDays = getWeekendDays(dateStart, weekendDay)
 
-            const daysOnMonths = daysByMonths(programmableDays)
-            const correspondingMonths = nextMonths(dateStart, daysByMonths(programmableDays).length)
+            const scheduleCreated = getSchedule(dateStart, programmableDays)
 
-            const newSchedule = correspondingMonths.map((month, index) => ({
-                month: month,
-                day: daysOnMonths[index],
-            }));
-
-            setSchedule(newSchedule)
+            setSchedule(scheduleCreated)
 
         } else {
             alert("Asegúrate de llenar todos los campos primero")

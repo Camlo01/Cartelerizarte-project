@@ -5,7 +5,7 @@ import AsignacionesPDF from './PDF/AsignacionesPDF';
 import NamesInputs from './components/NamesInputs';
 import DateForm from './components/DateForm';
 
-import { getProgrammableDays, daysByMonths, nextMonths } from './PDF/util/schedule';
+import { getProgrammableDays, getSchedule } from '../../utils/ScheduleUtils';
 
 export default function AsignacionesPage() {
 
@@ -39,15 +39,9 @@ export default function AsignacionesPage() {
         if (dateStart != null && weekDay != null && weekendDay != null) {
             const programmableDays = getProgrammableDays(dateStart, weekDay, weekendDay)
 
-            const daysOnMonths = daysByMonths(programmableDays)
-            const correspondingMonths = nextMonths(dateStart, daysByMonths(programmableDays).length)
+            const scheduleCreated = getSchedule(dateStart, programmableDays)
 
-            const newSchedule = correspondingMonths.map((month, index) => ({
-                month: month,
-                day: daysOnMonths[index],
-            }));
-
-            setSchedule(newSchedule)
+            setSchedule(scheduleCreated)
 
         } else {
             alert("Asegurate de llenar todos los campos primero")
