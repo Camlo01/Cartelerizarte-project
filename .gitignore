@@ -25,3 +25,8 @@ cartelerizarte-project
 *.njsproj
 *.sln
 *.sw?
+
+#Environment Variables
+.env
+.env.development
+.env.production
