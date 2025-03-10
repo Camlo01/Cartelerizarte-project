@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-
 export default function NamesInputs({ schedule, setPeopleScheduled }) {
-
 
     const [inputValues, setInputValues] = useState([]);
 
@@ -92,21 +90,19 @@ export default function NamesInputs({ schedule, setPeopleScheduled }) {
 function AgendaOfDay({ day, dayIndex, values, onChange }) {
 
     const deepYellowColor = '#CA7500'
-    const [inputsActive, setInputsActive] = useState(false)
+    const [disabledInputs, setDisabledInputs] = useState(null)
 
-    const inputGeneralStyle = { padding: "1px 3px", fontSize: '17px', backgroundColor: inputsActive ? '#b2b2b2' : 'white', fontWeight: 600, border: 'none', borderBottom: '2px solid gray', margin: "0 10px", transition: 'all .26s ease' }
+    const inputGeneralStyle = { padding: "1px 3px", fontSize: '17px', backgroundColor: disabledInputs ? '#b2b2b2' : 'white', fontWeight: 600, border: 'none', borderBottom: '2px solid gray', margin: "0 10px", transition: 'all .26s ease' }
 
     const handleSelectChange = (e) => {
         const val = e.target.value;
 
-        if (val === 'none') {
-            setInputsActive(false)
-            return
+        if (val == 'conferencia') {
+            setDisabledInputs(false)
         }
-        setInputsActive(true)
+        else setDisabledInputs(true)
 
         onChange(dayIndex, 'select', val)
-
     }
 
     const handleBosquejoChange = (val) => {
@@ -173,7 +169,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                             type="text"
                             value={values['orador' || ""]}
                             onChange={(e) => onChange(dayIndex, 'orador', e.target.value)}
-                            disabled={inputsActive}
+                            disabled={disabledInputs}
                         />
                     </div>
                     <div>
@@ -183,7 +179,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                             type="text"
                             value={values['congregacion' || ""]}
                             onChange={(e) => onChange(dayIndex, 'congregacion', e.target.value)}
-                            disabled={inputsActive}
+                            disabled={disabledInputs}
                         />
                     </div>
                     <div>
@@ -193,7 +189,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                             type="text"
                             value={values['bosquejo' || ""]}
                             onChange={(e) => handleBosquejoChange(e.target.value)}
-                            disabled={inputsActive}
+                            disabled={disabledInputs}
                         />
                     </div>
                     <div>
@@ -203,7 +199,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                             type="text"
                             value={values['tema' || ""]}
                             onChange={(e) => onChange(dayIndex, 'tema', e.target.value)}
-                            disabled={inputsActive}
+                            disabled={disabledInputs}
                         />
                     </div>
                     <div>
@@ -213,7 +209,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                             type="text"
                             value={values['contacto' ?? ""]}
                             onChange={(e) => handleContactoChange(e.target.value)}
-                            disabled={inputsActive}
+                            disabled={disabledInputs}
                         />
                     </div>
                     <div>
