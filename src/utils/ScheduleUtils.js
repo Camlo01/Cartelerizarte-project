@@ -1,3 +1,4 @@
+import { capitalizeFirstLetter } from "./StringUtils";
 
 /**
  * Gets all the programmable days for the current and next month based on selected days of week (weekdays and weekends).
@@ -75,6 +76,79 @@ export function fileNameFormatted(name, schedule) {
 
     }
     else return "Listado sin generar"
+}
+
+/**
+ * Generates a schedule of dates for multiple groups based on a starting date and selected weekdays.
+ * @param {string} startDate  - The starting date in 'YYYY-MM-DD'. format. '2025-02-01'
+ * @param {number} weekDay - The selected weekday (0 for Sunday, 1 for Monday, ..., 6 for Saturday).
+ * @param {number} weekendDay - An additional selected day (same format as weekDay).
+ * @param {number} groups - Amounth of total groups to schedule.
+ * @param {number} startGroup - The index of the first group to start scheduling from.
+ * @param {boolean} isWeekly - Determines whether the scheduling should occur on a weekly basis.
+ * @returns {Object} - An object containing the scheduled dates for each group.
+ */
+export function getDatesForGroups(startDate, weekDay, weekendDay, groups, startGroup, isWeekly) {
+
+    let days = []
+    let datesByGroups = []
+
+    const [year, month, day] = startDate.split("-").map(Number)
+    let date = new Date(Date.UTC(year, month - 1, day))
+
+    while (days.length < 27) {
+        const dayToCompare = date.getUTCDay()
+
+        if (dayToCompare == weekDay || dayToCompare == weekendDay) {
+            days.push(date.getUTCDate())
+        }
+        date.setUTCDate(date.getUTCDate() + 1)
+    }
+
+    const daysOnMonths = daysByMonths(days)
+    const correspondingMonths = getMonths(startDate, daysOnMonths.length)
+
+    let dates = correspondingMonths.map((month, index) => ({
+        month: capitalizeFirstLetter(month),
+        day: daysOnMonths[index]
+    }))
+
+    let groupsCounter = (startGroup == 0) ? 0 : startGroup - 1;
+    let secondCounter = 0
+
+    dates.forEach(({ month, day }) => {
+        day.forEach(d => {
+            datesByGroups.push({
+                date: {
+                    month: month,
+                    day: d
+                },
+                group: (() => {
+                    if (isWeekly) {
+                        if (secondCounter % 2 === 0) {
+                            groupsCounter++; // Increment two iterations
+
+                            // Reset gruoupsCounter if limit es exceeded
+                            if (groupsCounter > groups) {
+                                groupsCounter = 1;
+                            }
+                        }
+                        secondCounter++;
+                        return groupsCounter;
+                    } else {
+
+                        if (groupsCounter >= groups) {
+                            groupsCounter = 0
+                        }
+                        groupsCounter++
+                        return groupsCounter
+                    }
+                })()
+            });
+        });
+    });
+
+    return datesByGroups
 }
 
 // Internal Functions (Not Exported)
