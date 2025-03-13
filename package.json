@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:zip": "vite build && cd build && zip -r cartelera-project.zip ./* && zip -r cartelera-project.zip ./.htaccess",
     "lint": "eslint .",
     "preview": "vite preview"
   },
