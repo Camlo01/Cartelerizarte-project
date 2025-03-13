@@ -1,4 +1,4 @@
-export default function DateForm({ handleDateStart, handleSelectWeekDay, handleSelectWeekendDay, handleBtnDateStart }) {
+export default function DateForm({ handleDateStart, handleSelectWeekDay, handleSelectWeekendDay, handleBtnDateStart, handleCheckBox }) {
 
     return (
         <div style={{ display: 'block', margin: 'auto', paddingTop: '40px', width: '65vw' }}>
@@ -27,6 +27,14 @@ export default function DateForm({ handleDateStart, handleSelectWeekDay, handleS
                             <option value="6">Sábado</option>
                             <option value="0">Domingo</option>
                         </select>
+                    </div>
+
+                    <div style={{ margin: 'auto auto 20px auto', width: 'fit-content' }}>
+                        <hr style={{ margin: '20px auto' }} />
+                        <div style={{ width: 'fit-content', margin: 'auto', fontSize: '1.4rem' }} >
+                            <label style={{ marginRight: '20px ', color: 'rgb(228 170 179)' }} htmlFor="fin-semana">Lista de 1 Mes (Opcional)</label>
+                            <input style={{ height: 18, width: 18 }} type="checkbox" name="" id="only-one-month" onChange={handleCheckBox} />
+                        </div>
                     </div>
                 </div>
                 <button style={{

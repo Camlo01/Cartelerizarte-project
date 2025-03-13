@@ -13,6 +13,7 @@ export default function AsignacionesPage() {
     const [dateStart, setDateStart] = useState(null)
     const [weekDay, setWeekDay] = useState(null)
     const [weekendDay, setWeekendDay] = useState(null)
+    const [onlyOneMonth, setOnlyOneMonth] = useState(false)
 
     // Content
     const [schedule, setSchedule] = useState([])
@@ -32,6 +33,10 @@ export default function AsignacionesPage() {
     const handleSelectWeekendDay = (e) => {
         setWeekendDay(e.target.value)
     }
+    const handleCheckBox = (e) => {
+        setOnlyOneMonth(e.target.checked)
+    }
+
     const handleBtnDateStart = (e) => {
         e.preventDefault();
 
@@ -40,6 +45,10 @@ export default function AsignacionesPage() {
             const programmableDays = getProgrammableDays(dateStart, weekDay, weekendDay)
 
             const scheduleCreated = getSchedule(dateStart, programmableDays)
+
+            if (onlyOneMonth){
+                scheduleCreated.pop()
+            }
 
             setSchedule(scheduleCreated)
 
@@ -58,7 +67,8 @@ export default function AsignacionesPage() {
                 handleDateStart={handleDateStart}
                 handleSelectWeekDay={handleSelectWeekDay}
                 handleSelectWeekendDay={handleSelectWeekendDay}
-                handleBtnDateStart={handleBtnDateStart} />
+                handleBtnDateStart={handleBtnDateStart}
+                handleCheckBox={handleCheckBox} />
 
             <NamesInputs schedule={schedule} setPeopleScheduled={setPeopleScheduled} />
 
