@@ -1,4 +1,4 @@
-import { Page, Text, View, Document, Image, Font } from '@react-pdf/renderer';
+import { Page, Text, View, Document, Image } from '@react-pdf/renderer';
 import Title from './Components/title';
 
 // import ImageBackground from '/assets/background.png'
@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 
 import { capitalizeFirstLetter } from '../../../utils/StringUtils';
 import { fileNameFormatted } from '../../../utils/ScheduleUtils';
+
+import registerFonts from '../../../utils/FontLoader';
 
 export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName }) {
 
@@ -16,24 +18,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
         setFileName(fileNameFormatted("Asignaciones", schedule))
     }, [schedule])
 
-    // only TTF and WOFF font are supported
-    Font.register({
-        family: 'Montserrat',
-        fonts: [
-            {
-                src: '/assets/Fonts/Montserrat/Montserrat-Medium.ttf',
-                fontWeight: 500,
-            },
-            {
-                src: 'assets/Fonts/Montserrat/Montserrat-SemiBold.ttf',
-                fontWeight: 600
-            },
-            {
-                src: '/assets/Fonts/Montserrat/Montserrat-Bold.ttf',
-                fontWeight: 700,
-            },
-        ],
-    });
+    registerFonts()
 
     return (
         <Document title='Programación Asignaciones'>
@@ -89,7 +74,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                     fontSize: '28px',
                                                     color: deepRedColor,
                                                     letterSpacing: '2px',
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'kohinoor-latin',
                                                     fontWeight: 600
                                                 }}>{capitalizeFirstLetter(month.month)}</Text>
                                             </View>
@@ -121,7 +106,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                             borderRight: 3, borderColor: deepRedColor,
                                                         }}>
                                                             <Text style={{
-                                                                display: 'block', fontSize: 18, fontFamily: 'Montserrat', fontWeight: 600,
+                                                                display: 'block', fontSize: 18, fontFamily: 'Avenir-Next', fontWeight: 600, marginTop: '6px',
                                                                 color: i % 2 === 0 ? 'black' : deepRedColor
                                                             }}>
                                                                 {date}
@@ -130,7 +115,7 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                         <View style={{ display: 'flex', width: '100%' }}>
                                                             {
                                                                 (contentScheduled != undefined) ?
-                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '10px', textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 500 }}>
+                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '10px', textAlign: 'center', fontWeight: 500 }}>
 
                                                                         {/* First Column */}
                                                                         <View style={{
@@ -138,15 +123,15 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                                             alignItems: 'center', justifyContent: 'center', borderRight: 3, borderColor: deepRedColor,
                                                                         }}>
                                                                             <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-                                                                                <Text style={{}} >{contentScheduled.acomodadores1}</Text>
-                                                                                <Text style={{}}>{contentScheduled.acomodadores2}</Text>
+                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px' }} >{contentScheduled.acomodadores1}</Text>
+                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px' }}>{contentScheduled.acomodadores2}</Text>
                                                                             </View>
                                                                             <View style={{
                                                                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                                                 margin: 'auto', width: '100%', height: '100%',
                                                                                 borderLeft: 3, borderColor: '#a7212d'
                                                                             }}>
-                                                                                <Text style={{}}>{contentScheduled.seguridad}</Text>
+                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px' }}>{contentScheduled.seguridad}</Text>
                                                                             </View>
                                                                         </View>
 
@@ -156,15 +141,15 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                                             alignItems: 'center', justifyContent: 'center', borderRight: 3, borderColor: deepRedColor,
                                                                         }}>
                                                                             <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-                                                                                <Text>{contentScheduled.microfonos1}</Text>
-                                                                                <Text>{contentScheduled.microfonos2}</Text>
+                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px' }}>{contentScheduled.microfonos1}</Text>
+                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px' }}>{contentScheduled.microfonos2}</Text>
                                                                             </View>
                                                                             <View style={{
                                                                                 margin: 'auto', width: '100%', height: '100%',
                                                                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                                                 borderLeft: 3, borderColor: '#a7212d'
                                                                             }}>
-                                                                                <Text style={{ textAlign: 'center' }}>{contentScheduled.plataforma}</Text>
+                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px', textAlign: 'center' }}>{contentScheduled.plataforma}</Text>
                                                                             </View>
                                                                         </View>
 
@@ -174,17 +159,18 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                                             margin: "auto", flex: 3, width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
                                                                             alignItems: 'center', justifyContent: 'center',
                                                                         }}>
-                                                                            <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Text>{contentScheduled.audioVideo1}</Text></View>
+                                                                            <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px', }}>{contentScheduled.audioVideo1}</Text></View>
                                                                             <View style={{
                                                                                 margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                                                 borderLeft: 3, borderColor: '#a7212d'
-                                                                            }}><Text>{contentScheduled.audioVideo2}</Text></View>
+                                                                            }}><Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px', }}>{contentScheduled.audioVideo2}</Text></View>
                                                                         </View>
 
                                                                     </View>
                                                                     :
                                                                     <View style={{ margin: "auto", width: '100%' }}>
-                                                                        <Text style={{ color: "black", fontSize: '14px', fontFamily: 'Helvetica' }}>- Carga el contenido de esta fecha -</Text>
+                                                                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '4px', color: "black", fontSize: '14px' }}>- Carga el contenido de esta fecha -</Text>
                                                                     </View>
                                                             }
                                                         </View>
@@ -208,8 +194,9 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                     }}>
                                     <Text style={{
                                         fontSize: '36px',
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Avenir-Next',
                                         fontWeight: 700,
+                                        marginTop:'10px',
                                         color: '#212226',
                                         margin: '0 auto',
                                         width: '530px',

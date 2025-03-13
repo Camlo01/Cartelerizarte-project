@@ -42,6 +42,11 @@ export default function title() {
             justifyContent: 'center',
             alignItems: 'center'
         },
+        titleColumnsElementText: {
+            fontFamily: 'kohinoor-latin',
+            fontWeight: 600,
+            marginTop: '4px'
+        },
         titleColumnsElementFirst: { backgroundColor: ligthtGray },
         titleColumnsElementSecond: { backgroundColor: darknessGray },
     })
@@ -61,10 +66,10 @@ export default function title() {
                 <View style={styles.titleColumns}>
 
                     <View style={[styles.titleColumnsElement, styles.titleColumnsElementFirst]} >
-                        <Text>Presidente</Text>
+                        <Text style={styles.titleColumnsElementText}>Presidente</Text>
                     </View>
                     <View style={[styles.titleColumnsElement, styles.titleColumnsElementSecond]} >
-                        <Text>Lector</Text>
+                        <Text style={styles.titleColumnsElementText}>Lector</Text>
                     </View>
 
                 </View>

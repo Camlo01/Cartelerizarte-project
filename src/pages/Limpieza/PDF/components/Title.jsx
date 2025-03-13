@@ -25,7 +25,7 @@ export default function Title() {
             width: '100%', backgroundColor: grayColor, displa: 'flex',
         },
         titleBody: { display: 'flex', height: '100%', alignItems: 'center', justifyContent: 'center' },
-        titleText: { color: 'white', fontFamily: 'Montserrat', fontSize: '38px', paddingRight: '100px' }
+        titleText: { color: 'white', fontFamily: 'Avenir-Next', fontWeight: 600, fontSize: '38px', paddingRight: '100px', marginTop: '10px' }
     })
 
     return (

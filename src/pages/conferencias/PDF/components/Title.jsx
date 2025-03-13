@@ -31,10 +31,11 @@ export default function Title() {
         },
         titleText: {
             width: '370px',
-            fontWeight: 600,
             fontSize: '26px',
             color: 'white',
-            fontFamily: 'Montserrat',
+            fontFamily: 'Avenir-Next',
+            fontWeight: 600,
+            marginTop: '10px'
         },
 
         // SubColumns
@@ -49,6 +50,11 @@ export default function Title() {
             fontSize: '14px',
             textAlign: 'center',
             paddingBottom: '10px'
+        },
+        subTitleElementText: {
+            fontFamily: 'Avenir-Next',
+            fontWeight: 600,
+            marginTop: '4px'
         },
 
         // Individual Elements
@@ -97,22 +103,22 @@ export default function Title() {
             <View style={styles.subtitleContainer}>
 
                 <View style={[styles.subtitleElement, styles.subEDia]}>
-                    <Text>Día</Text>
+                    <Text style={styles.subTitleElementText}>Día</Text>
                 </View>
                 <View style={[styles.subtitleElement, styles.subEOrador]}>
-                    <Text>Orador</Text>
+                    <Text style={styles.subTitleElementText}>Orador</Text>
                 </View>
                 <View style={[styles.subtitleElement, styles.subECongre]}>
-                    <Text>Congregación</Text>
+                    <Text style={styles.subTitleElementText}>Congregación</Text>
                 </View>
                 <View style={[styles.subtitleElement, styles.subEBosquejo]}>
-                    <Text>Bosquejo</Text>
+                    <Text style={styles.subTitleElementText}>Bosquejo</Text>
                 </View>
                 <View style={[styles.subtitleElement, styles.subETema]}>
-                    <Text>Tema</Text>
+                    <Text style={styles.subTitleElementText}>Tema</Text>
                 </View>
                 <View style={[styles.subtitleElement, styles.subEContacto]}>
-                    <Text style={styles.subEContactoText}>Contacto</Text>
+                    <Text style={[styles.subEContactoText, styles.subTitleElementText]}>Contacto</Text>
                 </View>
             </View>
         </View >

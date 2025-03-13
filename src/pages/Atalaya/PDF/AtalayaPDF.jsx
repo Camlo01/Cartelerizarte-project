@@ -1,4 +1,4 @@
-import { Page, Text, View, Document, Image, Font } from '@react-pdf/renderer';
+import { Page, Text, View, Document, Image } from '@react-pdf/renderer';
 import Title from './Components/title';
 
 // import ImageBackground from '/assets/background.png'
@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 
 import { capitalizeFirstLetter } from '../../../utils/StringUtils';
 import { fileNameFormatted } from '../../../utils/ScheduleUtils';
+
+import registerFonts from '../../../utils/FontLoader';
 
 export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
 
@@ -16,26 +18,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
         setFileName(fileNameFormatted("Presidente & Lector", schedule))
     }, [schedule])
 
-    // only TTF and WOFF font are supported
-    Font.register({
-        family: 'Montserrat',
-        fonts: [
-            {
-                src: '/assets/Fonts/Montserrat/Montserrat-Medium.ttf',
-                fontWeight: 500,
-            },
-            {
-                src: 'assets/Fonts/Montserrat/Montserrat-SemiBold.ttf',
-                fontWeight: 600
-            },
-            {
-                src: '/assets/Fonts/Montserrat/Montserrat-Bold.ttf',
-                fontWeight: 700,
-            },
-        ],
-    });
-
-
+    registerFonts()
 
     return (
         <Document title='Programación Atalaya y Lector'>
@@ -73,7 +56,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
                                                     fontSize: '28px',
                                                     color: deepYellowColor,
                                                     letterSpacing: '2px',
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'kohinoor-latin',
                                                     fontWeight: 600,
                                                     textAlign: 'center',
                                                     marginBottom: '145px',
@@ -112,7 +95,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
                                                             borderRight: 3, borderColor: deepYellowColor,
                                                         }}>
                                                             <Text style={{
-                                                                display: 'block', fontSize: 20, fontFamily: 'Montserrat', fontWeight: 600,
+                                                                display: 'block', fontSize: 20, fontFamily: 'Avenir-Next', fontWeight: 600, marginTop: '4px',
                                                                 color: '#555555' //i % 2 === 0 ? 'black' : deepYellowColor
                                                             }}>
                                                                 {date}
@@ -123,7 +106,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
                                                         <View style={{ display: 'flex', width: '100%' }}>
                                                             {
                                                                 (contentScheduled != undefined) ?
-                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '14px', textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 500, color: '#555555' }}>
+                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '14px', textAlign: 'center', fontFamily: 'Avenir-Next', fontWeight: 500, color: '#555555' }}>
 
                                                                         {/* First Column */}
                                                                         <View style={{
@@ -131,7 +114,7 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
                                                                             alignItems: 'center', justifyContent: 'center', borderRight: 3, borderColor: '#A8A8A8', textAlign: 'justify'
                                                                         }}>
                                                                             <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-                                                                                <Text >{contentScheduled.presidente}</Text>
+                                                                                <Text style={{ marginTop: '4px', }}>{contentScheduled.presidente}</Text>
                                                                             </View>
                                                                         </View>
 
@@ -141,14 +124,14 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
                                                                             alignItems: 'center', justifyContent: 'center',
                                                                         }}>
                                                                             <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-                                                                                <Text >{contentScheduled.lector}</Text>
+                                                                                <Text style={{ marginTop: '4px', }}>{contentScheduled.lector}</Text>
                                                                             </View>
                                                                         </View>
 
                                                                     </View>
                                                                     :
                                                                     <View style={{ margin: "auto", width: '100%' }}>
-                                                                        <Text style={{ color: "black", fontSize: '14px', fontFamily: 'Helvetica' }}>- Vacío -</Text>
+                                                                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px', color: "black", fontSize: '14px' }}>- Vacío -</Text>
                                                                     </View>
                                                             }
                                                         </View>
@@ -176,10 +159,8 @@ export default function AtalayaPDF({ schedule, peopleScheduled, setFileName }) {
                                     display: 'flex',
                                     textAlign: 'center',
                                     justifyContent: 'center',
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: 700
                                 }}>
-                                <Text style={{ fontSize: '30px', color: '#212226', width: '430px', margin: '0 auto', paddingBottom: 90 }}>¡Genera el cronograma!</Text>
+                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 700, marginTop: '2px', fontSize: '30px', color: '#212226', width: '430px', margin: '0 auto', paddingBottom: 90 }}>¡Genera el cronograma!</Text>
                             </View>
                         }
 

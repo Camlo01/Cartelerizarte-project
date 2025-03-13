@@ -5,6 +5,8 @@ import Title from './Components/title';
 import splitIntoEqualsGroups from '../../../utils/ArrayUtils';
 import { useEffect, useState } from 'react';
 
+import registerFonts from '../../../utils/FontLoader.js'
+
 const ligthBlueColor = '#92b2d9'
 const darkBlueColor = '#7d9fce'
 
@@ -17,25 +19,7 @@ export default function LimpiezaPDF({ schedule, setFileName }) {
         setFileName("Programación Limpieza")
     }, [schedule])
 
-    // only TTF and WOFF font are supported
-    Font.register({
-        family: 'Montserrat',
-        fonts: [
-            {
-                src: '/assets/Fonts/Montserrat/Montserrat-Medium.ttf',
-                fontWeight: 500,
-            },
-            {
-                src: 'assets/Fonts/Montserrat/Montserrat-SemiBold.ttf',
-                fontWeight: 600
-            },
-            {
-                src: '/assets/Fonts/Montserrat/Montserrat-Bold.ttf',
-                fontWeight: 700,
-            },
-        ],
-    });
-
+    registerFonts()
 
     return (
         <Document title='Programación Limpieza'>
@@ -80,10 +64,8 @@ export default function LimpiezaPDF({ schedule, setFileName }) {
                                     display: 'flex',
                                     textAlign: 'center',
                                     justifyContent: 'center',
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: 700
                                 }}>
-                                <Text style={{ fontSize: '30px', color: '#212226', width: '430px', margin: '0 auto', paddingBottom: 40 }}>¡Genera el cronograma!</Text>
+                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 700, fontSize: '36px', color: '#212226', width: '430px', margin: '0 auto', paddingBottom: 40 }}>¡Genera el cronograma!</Text>
                             </View>
                         }
                     </View>
@@ -126,16 +108,16 @@ function rowDate(date, index) {
             color: textColor
         }} key={index} >
             <View style={{ display: 'flex', flexDirection: 'row' }}>
-                <Text style={{ fontSize: textSize, marginRight: '5px' }}>{date.date.month}</Text>
-                <Text style={{ fontSize: NumbSize }}>{date.date.day}</Text>
+                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, fontSize: textSize, letterSpacing: '-1px', marginRight: '5px', marginTop: '6px' }}>{date.date.month}</Text>
+                <Text style={{ fontFamily: 'Avenir-Next', fontSize: NumbSize, marginTop: '5px' }}>{date.date.day}</Text>
             </View>
             <View style={{ width: '3px', height: '45px', margin: '0 5px', backgroundColor: darkBlueColor, }} />{/* Separator line */}
             <View style={{
                 display: 'flex', flexDirection: 'row',
                 alignItems: 'center', width: '85px'
             }}>
-                <Text style={{ fontSize: secondTextSize }}> Grupo</Text>
-                <Text style={{ fontSize: NumbSize }}> {date.group} </Text>
+                <Text style={{ fontSize: secondTextSize, fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '5px' }}> Grupo</Text>
+                <Text style={{ fontFamily: 'Avenir-Next', fontSize: NumbSize, marginTop: '8px' }}> {date.group} </Text>
             </View>
         </View >
     )

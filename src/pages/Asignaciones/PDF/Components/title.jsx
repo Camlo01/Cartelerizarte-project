@@ -16,8 +16,6 @@ export default function Title() {
             flexDirection: 'row',
             // height: '130px' // ORIGINAL
             height: '75px',
-            fontFamily: 'Montserrat',
-            fontWeight: 600
         },
         titleIconContainer: {
             width: '115px',
@@ -36,10 +34,10 @@ export default function Title() {
             flex: 'auto',
             flexDirection: 'row',
             color: 'white',
-            fontSize: '20px',
             fontWeight: '800'
         },
-        titleColumnsElement: { width: '33.34%', justifyContent: 'center', alignItems: 'center' },
+        titleColumnsElement: { fontFamily: 'kohinoor-latin', fontWeight: 600, width: '33.34%', justifyContent: 'center', alignItems: 'center' },
+        titleColumnsElementText: { fontSize: '26px', marginTop: '5px' },
         titleColumnsElementFirst: { backgroundColor: firstGray },
         titleColumnsElementSecond: { backgroundColor: secondGray },
         titleColumnsElementThird: { backgroundColor: thirdGray },
@@ -74,19 +72,19 @@ export default function Title() {
                 {/* Columns Titles */}
                 <View style={styles.titleColumns}>
                     <View style={[styles.titleColumnsElement, styles.titleColumnsElementFirst]}>
-                        <Text>Acomodadores</Text>
+                        <Text style={styles.titleColumnsElementText}>Acomodadores</Text>
                         <View style={styles.titleColumnsIndicator}>
                             <Text style={styles.textTitleIndicator}>Seguridad</Text>
                         </View>
                     </View>
                     <View style={[styles.titleColumnsElement, styles.titleColumnsElementSecond]}>
-                        <Text>Micrófonos</Text>
+                        <Text style={styles.titleColumnsElementText}>Micrófonos</Text>
                         <View style={styles.titleColumnsIndicator}>
                             <Text style={styles.textTitleIndicator}>Plataforma</Text>
                         </View>
                     </View>
                     <View style={[styles.titleColumnsElement, styles.titleColumnsElementThird]}>
-                        <Text>Audio y Video</Text>
+                        <Text style={styles.titleColumnsElementText}>Audio y Video</Text>
                     </View>
                 </View>
 

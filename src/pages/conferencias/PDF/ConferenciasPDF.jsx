@@ -1,9 +1,10 @@
-import { Page, Text, View, Document, Image, Font } from "@react-pdf/renderer"
+import { Page, Text, View, Document, Image } from "@react-pdf/renderer"
 import Title from './components/Title'
 
 // import ImageBackground from '/assets/background.png'
 import { useEffect } from "react"
 
+import registerFonts from '../../../utils/FontLoader.js'
 import { capitalizeFirstLetter, styleOradorString, styleTemaString } from '../../../utils/StringUtils';
 import { fileNameFormatted } from "../../../utils/ScheduleUtils";
 
@@ -18,26 +19,7 @@ export default function ConferenciasPDF({ schedule, peopleScheduled, setFileName
         setFileName(fileNameFormatted("Conferencias", schedule))
     }, [schedule])
 
-
-    // only TTF and WOFF font are supported
-    Font.register({
-        family: 'Montserrat',
-        fonts: [
-            {
-                src: '/assets/Fonts/Montserrat/Montserrat-Medium.ttf',
-                fontWeight: 500,
-            },
-            {
-                src: 'assets/Fonts/Montserrat/Montserrat-SemiBold.ttf',
-                fontWeight: 600
-            },
-            {
-                src: '/assets/Fonts/Montserrat/Montserrat-Bold.ttf',
-                fontWeight: 700,
-            },
-        ],
-    });
-
+    registerFonts()
 
     return (
         <Document title='Programación Conferencistas' >
@@ -91,8 +73,9 @@ export default function ConferenciasPDF({ schedule, peopleScheduled, setFileName
                                                     fontSize: '31px',
                                                     color: deepYellowColor,
                                                     letterSpacing: '2px',
-                                                    fontFamily: 'Montserrat',
-                                                    fontWeight: 600
+                                                    fontFamily: 'kohinoor-latin',
+                                                    fontWeight: 600,
+                                                    marginTop: '4px'
                                                 }}>{capitalizeFirstLetter(month.month)}</Text>
                                             </View>
                                         </View>
@@ -119,12 +102,12 @@ export default function ConferenciasPDF({ schedule, peopleScheduled, setFileName
                                                         backgroundColor: 'white',
                                                     }} >
                                                         <View style={{
-                                                            width: 37, margin: 'auto', height: '100%', textAlign: 'center',
+                                                            width: 35, margin: 'auto', height: '100%', textAlign: 'center',
                                                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                             borderRight: 3, borderColor: deepYellowColor
                                                         }}>
                                                             <Text style={{
-                                                                display: 'block', fontSize: 20, fontFamily: 'Montserrat', fontWeight: 600,
+                                                                display: 'block', fontSize: 20, fontFamily: 'Avenir-Next', fontWeight: 600, marginTop: '4px',
                                                                 color: 'black'
                                                             }}>
                                                                 {date}
@@ -138,7 +121,7 @@ export default function ConferenciasPDF({ schedule, peopleScheduled, setFileName
 
                                                                     :
                                                                     <View style={{ margin: "auto", width: '100%' }}>
-                                                                        <Text style={{ color: "black", fontSize: '14px', fontFamily: 'Helvetica' }}>- Vacío -</Text>
+                                                                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px', color: "black", fontSize: '14px' }}>- Vacío -</Text>
                                                                     </View>
                                                             }
                                                         </View>
@@ -161,10 +144,8 @@ export default function ConferenciasPDF({ schedule, peopleScheduled, setFileName
                                     display: 'flex',
                                     textAlign: 'center',
                                     justifyContent: 'center',
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: 700
                                 }}>
-                                <Text style={{ fontSize: '30px', color: '#212226', width: '430px', margin: '0 auto', paddingBottom: 25 }}>¡Genera el cronograma!</Text>
+                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 700, fontSize: '36px', color: '#212226', width: '430px', margin: '0 auto', paddingBottom: 25 }}>¡Genera el cronograma!</Text>
                             </View>
                         }
 
@@ -188,40 +169,35 @@ function ContentOfDate({ content }) {
     if (option === 'conferencia' || option === undefined) {
 
         return (
-            <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 500, fontSize: '14px' }}>
+            <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', textAlign: 'center', fontSize: '14px' }}>
 
                 {/* First Column */}
                 <View style={{
-                    width: '104px', display: "flex", alignItems: "center", justifyContent: "center", padding: '0 5px',
-                    borderRight: 2.5, borderColor: grayLinesColor
+                    width: '106px', display: "flex", alignItems: "center", justifyContent: "center", padding: '0 5px', borderRight: 2.5, borderColor: grayLinesColor
                 }}>
-
-                    <Text>{styleOradorString(content.orador)}</Text>
+                    <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px' }}>{styleOradorString(content.orador)}</Text>
                 </View>
 
                 <View style={{
-                    width: '125px', display: "flex", alignItems: "center", justifyContent: "center",
-                    borderRight: 2.5, borderColor: grayLinesColor
+                    width: '128px', display: "flex", alignItems: "center", justifyContent: "center", borderRight: 2.5, borderColor: grayLinesColor
                 }}>
-                    <Text>{content.congregacion}</Text>
+                    <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px' }}>{content.congregacion}</Text>
                 </View>
 
                 <View style={{
-                    width: '70px', display: "flex", alignItems: "center", justifyContent: "center",
-                    borderRight: 2.5, borderColor: grayLinesColor
+                    width: '71px', display: "flex", alignItems: "center", justifyContent: "center", borderRight: 2.5, borderColor: grayLinesColor
                 }}>
-                    <Text>{content.bosquejo}</Text>
+                    <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px' }}>{content.bosquejo}</Text>
                 </View>
 
                 <View style={{
-                    width: '285px', display: "flex", alignItems: "center", justifyContent: "center",
-                    borderRight: 2.5, borderColor: grayLinesColor, padding: '0 10px'
+                    width: '277px', display: "flex", alignItems: "center", justifyContent: "center", borderRight: 2.5, borderColor: grayLinesColor, padding: '0 10px'
                 }}>
-                    <Text>{styleTemaString(content.tema)}</Text>
+                    <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px' }}>{styleTemaString(content.tema)}</Text>
                 </View>
 
-                <View style={{ width: '110px', display: "flex", alignItems: "center", justifyContent: "center", }}>
-                    <Text>{content.contacto}</Text>
+                <View style={{ width: '108px', display: "flex", alignItems: "center", justifyContent: "center", }}>
+                    <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px' }}>{content.contacto}</Text>
                 </View>
 
             </View>
@@ -239,7 +215,7 @@ function ContentOfDate({ content }) {
 
     return (
         <View style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 800, paddingRight: '0px', color: "#CA7500" }}>{message}</Text>
+            <Text style={{ fontFamily: 'Avenir-Next', fontSize: '20px', fontWeight: 600, paddingRight: '0px', color: "#CA7500", marginTop: '4px' }}>{message}</Text>
         </View>
     )
 }
