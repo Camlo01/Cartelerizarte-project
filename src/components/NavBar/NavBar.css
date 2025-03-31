@@ -49,10 +49,14 @@ nav ul li .dropdown-title {
     color: rgb(240, 240, 240);
     cursor: pointer;
     transition: all 0.175s ease;
+    text-decoration: underline;
+    transition: text-underline-offset .5s ease;
+    text-underline-offset: 3px;
 }
 
 nav ul li .dropdown-title:hover {
     color: rgb(162, 162, 162);
+    text-underline-offset: 8px;
 }
 
 /* Menú desplegable oculto por defecto */
