@@ -90,7 +90,7 @@ export default function NamesInputs({ schedule, setPeopleScheduled }) {
 function AgendaOfDay({ day, dayIndex, values, onChange }) {
 
     const deepYellowColor = '#CA7500'
-    const [disabledInputs, setDisabledInputs] = useState(null)
+    const [disabledInputs, setDisabledInputs] = useState(false)
 
     const inputGeneralStyle = { padding: "1px 3px", fontSize: '17px', backgroundColor: disabledInputs ? '#b2b2b2' : 'white', fontWeight: 600, border: 'none', borderBottom: '2px solid gray', margin: "0 10px", transition: 'all .26s ease' }
 
