@@ -115,59 +115,9 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
                                                         <View style={{ display: 'flex', width: '100%' }}>
                                                             {
                                                                 (contentScheduled != undefined) ?
-                                                                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '11.2px', textAlign: 'center', fontWeight: 500 }}>
 
-                                                                        {/* First Column */}
-                                                                        <View style={{
-                                                                            margin: "auto", flex: 3, width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
-                                                                            alignItems: 'center', justifyContent: 'center', borderRight: 3, borderColor: deepRedColor,
-                                                                        }}>
-                                                                            <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px' }} >{contentScheduled.acomodadores1}</Text>
-                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '1px' }}>{contentScheduled.acomodadores2}</Text>
-                                                                            </View>
-                                                                            <View style={{
-                                                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                                                margin: 'auto', width: '100%', height: '100%',
-                                                                                borderLeft: 1.4, borderColor: '#a7212d'
-                                                                            }}>
-                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px' }}>{contentScheduled.seguridad}</Text>
-                                                                            </View>
-                                                                        </View>
+                                                                    <ContentOfDate content={contentScheduled} />
 
-                                                                        {/* Second Column */}
-                                                                        <View style={{
-                                                                            margin: "auto", flex: 3, width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
-                                                                            alignItems: 'center', justifyContent: 'center', borderRight: 3, borderColor: deepRedColor,
-                                                                        }}>
-                                                                            <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px' }}>{contentScheduled.microfonos1}</Text>
-                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '1x' }}>{contentScheduled.microfonos2}</Text>
-                                                                            </View>
-                                                                            <View style={{
-                                                                                margin: 'auto', width: '100%', height: '100%',
-                                                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                                                borderLeft: 1.4, borderColor: '#a7212d',
-                                                                            }}>
-                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px', textAlign: 'center' }}>{contentScheduled.plataforma}</Text>
-                                                                            </View>
-                                                                        </View>
-
-                                                                        {/* Third Column */}
-
-                                                                        <View style={{
-                                                                            margin: "auto", flex: 3, width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
-                                                                            alignItems: 'center', justifyContent: 'center',
-                                                                        }}>
-                                                                            <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                                                                <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px', }}>{contentScheduled.audioVideo1}</Text></View>
-                                                                            <View style={{
-                                                                                margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                                                borderLeft: .8, borderColor: 'rgb(185,75,84)'
-                                                                            }}><Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px', }}>{contentScheduled.audioVideo2}</Text></View>
-                                                                        </View>
-
-                                                                    </View>
                                                                     :
                                                                     <View style={{ margin: "auto", width: '100%' }}>
                                                                         <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '4px', color: "black", fontSize: '14px' }}>- Carga el contenido de esta fecha -</Text>
@@ -214,3 +164,79 @@ export default function AsignacionesPDF({ schedule, peopleScheduled, setFileName
     );
 };
 
+
+function ContentOfDate({ content }) {
+
+    const option = content.select
+
+    // Validate theres meeting
+    if (option === 'reunion' || option === undefined) {
+
+        const deepRedColor = '#a7212d'
+        return (
+            <View style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%', fontSize: '11.2px', textAlign: 'center', fontWeight: 500 }}>
+
+                {/* First Column */}
+                <View style={{
+                    margin: "auto", flex: 3, width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
+                    alignItems: 'center', justifyContent: 'center', borderRight: 3, borderColor: deepRedColor,
+                }}>
+                    <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
+                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px' }} >{content.acomodadores1}</Text>
+                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '1px' }}>{content.acomodadores2}</Text>
+                    </View>
+                    <View style={{
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        margin: 'auto', width: '100%', height: '100%',
+                        borderLeft: 1.4, borderColor: '#a7212d'
+                    }}>
+                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px' }}>{content.seguridad}</Text>
+                    </View>
+                </View>
+
+                {/* Second Column */}
+                <View style={{
+                    margin: "auto", flex: 3, width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
+                    alignItems: 'center', justifyContent: 'center', borderRight: 3, borderColor: deepRedColor,
+                }}>
+                    <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
+                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px' }}>{content.microfonos1}</Text>
+                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '1x' }}>{content.microfonos2}</Text>
+                    </View>
+                    <View style={{
+                        margin: 'auto', width: '100%', height: '100%',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        borderLeft: 1.4, borderColor: '#a7212d',
+                    }}>
+                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '3px', textAlign: 'center' }}>{content.plataforma}</Text>
+                    </View>
+                </View>
+
+                {/* Third Column */}
+
+                <View style={{
+                    margin: "auto", flex: 3, width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
+                    alignItems: 'center', justifyContent: 'center',
+                }}>
+                    <View style={{ margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px', }}>{content.audioVideo1}</Text></View>
+                    <View style={{
+                        margin: 'auto', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        borderLeft: .8, borderColor: 'rgb(185,75,84)'
+                    }}><Text style={{ fontFamily: 'Avenir-Next', fontWeight: 500, marginTop: '2px', }}>{content.audioVideo2}</Text></View>
+                </View>
+
+            </View>
+        )
+    }
+    let message;
+
+    if (option === 'asamblea') message = 'Día de Asamblea'
+    if (option === 'conmemoracion') message = 'Día de Conmemoración'
+
+    return (
+        <View style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontFamily: 'Avenir-Next', fontSize: '20px', fontWeight: 600, padding: 0, color: '#a7212d', marginTop: '4px' }}>{message}</Text>
+        </View >
+    )
+}

@@ -93,10 +93,31 @@ export default function NamesInputs({ schedule, setPeopleScheduled }) {
 
 function AgendaOfDay({ day, dayIndex, values, onChange }) {
 
-    return (
-        <div style={{ marginRight: '18px', border: '3px solid #B63035', paddingBottom: '10px', backgroundColor: 'white', minWidth: '421px' }}>
-            <h3 style={{ fontSize: '24px', borderBottom: '4px solid #B63035', width: 'fit-content', marginBottom: '8px', marginTop: 8, paddingLeft: 10, color: 'black' }}>Programación día {day}</h3>
+    const [disabledInputs, setDisabledInputs] = useState(false)
 
+    const handleSelectChange = (e) => {
+        const val = e.target.value
+
+        if (val == 'reunion') {
+            setDisabledInputs(false)
+        }
+        else setDisabledInputs(true)
+
+        onChange(dayIndex, 'select', val)
+    }
+
+    return (
+        <div style={{ position: 'relative', marginRight: '18px', border: '3px solid #B63035', paddingBottom: '10px', backgroundColor: 'white', minWidth: '421px' }}>
+
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <h3 style={{ fontSize: '24px', borderBottom: '4px solid #B63035', width: 'fit-content', marginBottom: '8px', marginTop: 8, paddingLeft: 10, color: 'black' }}>Programación día {day}</h3>
+                <select name="" id="" style={{ height: '20px', marginLeft: 'auto', marginRight: '15px', width: '100px' }} onChange={handleSelectChange}>
+                    <option value="reunion">Reunión</option>
+                    <option value="" disabled>...</option>
+                    <option value="asamblea">Asamblea</option>
+                    <option value="conmemoracion">Día de Conmemoración</option>
+                </select>
+            </div>
             {/* Acomodadores & Seguridad */}
             <div style={{ backgroundColor: '#535653', paddingBottom: '15px' }}>
                 <h4 style={{ fontSize: '18px', color: 'white', paddingTop: '3px', marginLeft: "5px", }}>Acomodadores</h4>
@@ -107,6 +128,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                         type="text"
                         value={values[`acomodadores1`] || ""}
                         onChange={(e) => onChange(dayIndex, `acomodadores1`, e.target.value)}
+                        disabled={disabledInputs}
                     />
                     <input
                         style={{ padding: "2px 3px", fontSize: '16px', width: '100%', backgroundColor: '#D9D9D9', fontWeight: 600 }}
@@ -114,6 +136,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                         type="text"
                         value={values[`acomodadores2`] || ""}
                         onChange={(e) => onChange(dayIndex, `acomodadores2`, e.target.value)}
+                        disabled={disabledInputs}
                     />
                 </div>
 
@@ -125,6 +148,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                         type="text"
                         value={values[`seguridad`] || ""}
                         onChange={(e) => onChange(dayIndex, `seguridad`, e.target.value)}
+                        disabled={disabledInputs}
                     />
                 </div>
             </div>
@@ -139,6 +163,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                         type="text"
                         value={values[`microfonos1`] || ""}
                         onChange={(e) => onChange(dayIndex, `microfonos1`, e.target.value)}
+                        disabled={disabledInputs}
                     />
                     <input
                         style={{ padding: "2px 3px", fontSize: '16px', width: '100%', backgroundColor: '#D9D9D9', fontWeight: 600 }}
@@ -146,6 +171,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                         type="text"
                         value={values[`microfonos2`] || ""}
                         onChange={(e) => onChange(dayIndex, `microfonos2`, e.target.value)}
+                        disabled={disabledInputs}
                     />
                 </div>
 
@@ -157,6 +183,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                         type="text"
                         value={values[`plataforma`] || ""}
                         onChange={(e) => onChange(dayIndex, `plataforma`, e.target.value)}
+                        disabled={disabledInputs}
                     />
                 </div>
             </div>
@@ -171,6 +198,7 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                         type="text"
                         value={values[`audioVideo1`] || ""}
                         onChange={(e) => onChange(dayIndex, `audioVideo1`, e.target.value)}
+                        disabled={disabledInputs}
                     />
                     <input
                         style={{ padding: "2px 3px", fontSize: '16px', width: '100%', backgroundColor: '#D9D9D9', fontWeight: 600 }}
@@ -178,10 +206,26 @@ function AgendaOfDay({ day, dayIndex, values, onChange }) {
                         type="text"
                         value={values[`audioVideo2`] || ""}
                         onChange={(e) => onChange(dayIndex, `audioVideo2`, e.target.value)}
+                        disabled={disabledInputs}
                     />
                 </div>
 
             </div>
+
+            {/* Div to disable inputs */}
+            <div
+                style={{
+                    position: "absolute",
+                    top: '12%',
+                    left: 0,
+                    width: "100%",
+                    height: "88%",
+
+                    backgroundColor: "rgba(54, 54, 54, 0.76)",
+                    opacity: disabledInputs ? 1 : 0,  // Transición suave de opacidad
+                    visibility: disabledInputs ? "visible" : "hidden", // Evita clics cuando está oculto
+                    transition: "opacity 0.3s ease-in-out, visibility 0.3s ease-in-out",
+                }} />
 
         </div >
     );
