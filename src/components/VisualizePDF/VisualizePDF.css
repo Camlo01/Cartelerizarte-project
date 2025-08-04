@@ -1,7 +1,7 @@
 .PDFViewerContainer {
     background-color: #acafb7;
     display: flex;
-    padding: 10px 0;
+    padding: 10px 0 45px;
     margin: 0 auto 50px;
 }
 
