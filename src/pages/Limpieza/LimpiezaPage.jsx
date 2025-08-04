@@ -59,7 +59,8 @@ export default function LimpiezaPage() {
 
     const handleBtnDateStart = (e) => {
         e.preventDefault()
-        if (dateStart != null && weekDay != null && weekendDay != null && groups != null) {
+
+        if (dateStart != null && weekDay != null && weekendDay != null && ( groups != null && groups > 1)) {
             setSchedule(getDatesForGroups(dateStart, weekDay, weekendDay, groups, startGroup, isWeekly))
         }
         else alert("Debes llenar los campos necesarios")
