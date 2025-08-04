@@ -1,3 +1,5 @@
+import ActionButtonComponent from "../../../components/ActionButtonComponent"
+
 export default function DateForm({ handleDateStart, handleSelectWeekendDay, handleCheckBox, handleBtnDateStart }) {
 
     return (
@@ -18,18 +20,14 @@ export default function DateForm({ handleDateStart, handleSelectWeekendDay, hand
                         </select>
                     </div>
                 </div>
-                <div style={{ margin: 'auto auto 20px auto', width: 'fit-content' }}>
+                <div style={{ margin: 'auto auto 20px auto', width: 'fit-content', color: '#ffd191' }}>
+                        <hr style={{ margin: '20px auto' }} />
                     <div style={{ width: 'fit-content', margin: 'auto', fontSize: '1.4rem' }} >
                         <label style={{ marginRight: '20px ' }} htmlFor="fin-semana">Lista de 1 Mes (Opcional)</label>
                         <input style={{ height: 18, width: 18 }} type="checkbox" name="" id="only-one-month" onChange={handleCheckBox} />
                     </div>
                 </div>
-                <button style={{
-                    display: 'block',
-                    margin: 'auto',
-                    padding: '10px 20px',
-                    fontSize: '18px'
-                }} onClick={handleBtnDateStart}>Generar Campos</button>
+                <ActionButtonComponent event={handleBtnDateStart} text={'Generar Campos'} />
             </form>
         </div>
     )

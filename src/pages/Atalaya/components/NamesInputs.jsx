@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AutoLoadNames from "./AutoLoadNames";
-
+import ActionButtonComponent from "../../../components/ActionButtonComponent";
 
 export default function NamesInputs({ schedule, setPeopleScheduled }) {
     const [inputValues, setInputValues] = useState([]);
@@ -77,17 +77,7 @@ export default function NamesInputs({ schedule, setPeopleScheduled }) {
 
                 {allInputs}
 
-
-                <button style={{
-                    display: 'block', width: '230px', height: '60px', fontSize: '1.2rem', fontWeight: 800, backgroundColor: 'white',
-                    margin: '40px auto 50px',
-                    color: '#a7212d',
-                    border: '2px solid #a7212d'
-                }}
-                    onClick={handleButtonClick}
-                >
-                    Cargar Nombres
-                </button>
+                <ActionButtonComponent event={handleButtonClick} text={'Cargar Nombres'}/>
 
             </div>
         </>

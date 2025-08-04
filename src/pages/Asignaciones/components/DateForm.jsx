@@ -1,3 +1,5 @@
+import ActionButtonComponent from "../../../components/ActionButtonComponent"
+
 export default function DateForm({ handleDateStart, handleSelectWeekDay, handleSelectWeekendDay, handleBtnDateStart, handleCheckBox }) {
 
     return (
@@ -37,12 +39,7 @@ export default function DateForm({ handleDateStart, handleSelectWeekDay, handleS
                         </div>
                     </div>
                 </div>
-                <button style={{
-                    display: 'block',
-                    margin: 'auto',
-                    padding: '10px 20px',
-                    fontSize: '18px'
-                }} onClick={handleBtnDateStart}>Generar Campos</button>
+                <ActionButtonComponent event={handleBtnDateStart} text={'Generar Campos'} />
             </form>
         </div>
 

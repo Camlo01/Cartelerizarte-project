@@ -1,3 +1,5 @@
+import ActionButtonComponent from "../../../components/ActionButtonComponent"
+
 export default function DateForm({
     handleDateStart,
     handleSelectWeekDay,
@@ -43,23 +45,22 @@ export default function DateForm({
                         <input style={{ fontSize: '18px', width: 60 }} type="number" min={1} id='groups' onChange={handleGroups} placeholder="#" />
                     </div>
 
-                    <div style={{ width: 'fit-content', fontSize: '1.6rem', margin: 'auto', marginTop: '5px', marginBottom: '10px' }}>
-                        <label style={{ marginRight: '10px' }} htmlFor="date-start">Grupo que inicia (Opcional) </label>
-                        <input style={{ fontSize: '18px', width: 60 }} type="number" min={1} id='groups' max={groups} onChange={handleStartGroup} placeholder="?" />
-                    </div>
+                    <div style={{ margin: 'auto auto 20px auto', width: 'fit-content', color: '#42679a'}}>   
+                        <hr style={{ margin: '20px auto' }} />
+                        <div style={{ width: 'fit-content', fontSize: '1.6rem', margin: 'auto', marginTop: '5px', marginBottom: '10px' }}>
+                            <label style={{ marginRight: '10px' }} htmlFor="date-start">Grupo que inicia (Opcional) </label>
+                            <input style={{ fontSize: '18px', width: 60 }} type="number" min={1} id='groups' max={groups} onChange={handleStartGroup} placeholder="?" />
+                        </div>
 
-                    <div style={{ width: 'fit-content', fontSize: '1.6rem', margin: 'auto', marginTop: '5px', marginBottom: '10px' }}>
-                        <label style={{ marginRight: '10px' }} htmlFor="date-start">Semanal (Opcional)</label>
-                        <input style={{ fontSize: '18px', width: 15, height: 15 }} type="checkbox" id='is-weekly' onChange={handleCheckBox} />
+                        <div style={{ width: 'fit-content', fontSize: '1.6rem', margin: 'auto', marginTop: '5px', marginBottom: '10px' }}>
+                            <label style={{ marginRight: '10px' }} htmlFor="date-start">Semanal (Opcional)</label>
+                            <input style={{ fontSize: '18px', width: 15, height: 15 }} type="checkbox" id='is-weekly' onChange={handleCheckBox} />
+                        </div>
                     </div>
                 </div>
 
-                <button style={{
-                    display: 'block',
-                    margin: 'auto',
-                    padding: '10px 20px',
-                    fontSize: '18px'
-                }} onClick={handleBtnDateStart}>Generar Cronograma</button>
+                <ActionButtonComponent event={handleBtnDateStart} text={'Generar Campos'} />
+
             </form>
         </div>
     )
